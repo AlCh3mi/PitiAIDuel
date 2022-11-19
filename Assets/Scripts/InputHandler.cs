@@ -1,0 +1,32 @@
+﻿using System;
+using UnityEngine;
+
+public class InputHandler : MonoBehaviour
+{
+    [SerializeField] private KeyCode thruster = KeyCode.LeftShift;
+    [SerializeField] private KeyCode thrusterAlt = KeyCode.W;
+    [SerializeField] private KeyCode brake = KeyCode.Space;
+    [SerializeField] private KeyCode brakeAlt = KeyCode.S;
+    [SerializeField] private KeyCode primaryFire = KeyCode.Mouse0;
+
+    public Vector2 Input { get; private set; }
+    public Vector2 MousePosition => (Vector2)mousePos;
+    public bool Thruster => UnityEngine.Input.GetKey(thruster) || UnityEngine.Input.GetKey(thrusterAlt);
+    public bool Brake => UnityEngine.Input.GetKey(brake) || UnityEngine.Input.GetKey(brakeAlt);
+
+    public bool PrimaryFire => UnityEngine.Input.GetKey(primaryFire);
+    
+    private Camera mainCam;
+    private Vector3 mousePos;
+
+    private void Awake()
+    {
+        mainCam = Camera.main;
+    }
+
+    private void Update()
+    {
+        Input = new Vector2(UnityEngine.Input.GetAxis("Horizontal"), UnityEngine.Input.GetAxis("Vertical"));
+        mousePos = mainCam.ScreenToWorldPoint(UnityEngine.Input.mousePosition);
+    }
+}
