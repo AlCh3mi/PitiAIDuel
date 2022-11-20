@@ -8,6 +8,7 @@ public class InputHandler : MonoBehaviour
     [SerializeField] private KeyCode brake = KeyCode.Space;
     [SerializeField] private KeyCode brakeAlt = KeyCode.S;
     [SerializeField] private KeyCode primaryFire = KeyCode.Mouse0;
+    [SerializeField] private KeyCode headLight = KeyCode.Mouse1;
 
     public Vector2 Input { get; private set; }
     public Vector2 MousePosition => (Vector2)mousePos;
@@ -15,6 +16,8 @@ public class InputHandler : MonoBehaviour
     public bool Brake => UnityEngine.Input.GetKey(brake) || UnityEngine.Input.GetKey(brakeAlt);
 
     public bool PrimaryFire => UnityEngine.Input.GetKey(primaryFire);
+
+    public bool HeadLight => UnityEngine.Input.GetKey(headLight); 
     
     private Camera mainCam;
     private Vector3 mousePos;

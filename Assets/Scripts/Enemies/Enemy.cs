@@ -30,12 +30,7 @@ namespace Enemies
                     
                     if (target != null)
                         state = EnemyState.Destroy;
-                    
-                    //Find Resources
-                    //Mine Resources
-                    //Return to SpaceStation
-                    //...
-                    
+
                     break;
                 case EnemyState.Destroy:
                     

@@ -2,7 +2,7 @@
 
 namespace Spaceship
 {
-    public class Laser : MonoBehaviour
+    public class Projectile : MonoBehaviour
     {
         [SerializeField] private float damage;
         [SerializeField] private float speed;
