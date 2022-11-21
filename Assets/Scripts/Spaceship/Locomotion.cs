@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Spaceship
@@ -7,7 +8,7 @@ namespace Spaceship
         [SerializeField] private Transform model;
         [SerializeField] private float moveSpeed;
         [SerializeField] private float brakeStrength;
-    
+
         private Rigidbody2D rb2d;
         private InputHandler inputHandler;
 
@@ -28,8 +29,6 @@ namespace Spaceship
         
             if(inputHandler.Thruster)
                 rb2d.AddForce(model.up * moveSpeed, ForceMode2D.Force);
-        
-        
         }
     }
 }

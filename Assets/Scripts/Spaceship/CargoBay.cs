@@ -1,13 +1,19 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.Events;
 
 namespace Spaceship
 {
-    public class CargoBay : MonoBehaviour
+    public class CargoBay : MonoBehaviour, IMiner
     {
         public UnityEvent<int> dustUpdated;
         
         private int asteroidDust;
+
+        private void Start()
+        {
+            dustUpdated?.Invoke(asteroidDust);
+        }
 
         public int AsteroidDust
         {
@@ -36,11 +42,12 @@ namespace Spaceship
             
             AsteroidDust += amount;
         }
-        
-        
-        void OnGUI()
+
+        public int Deposit()
         {
-            GUI.Label(new Rect(10, 10, 100, 20), $"{AsteroidDust}");
+            var deposited = asteroidDust;
+            Decrement(asteroidDust);
+            return deposited;
         }
     }
 }

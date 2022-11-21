@@ -9894,14 +9894,15 @@ GameObject:
   - component: {fileID: 7082290179420828795}
   - component: {fileID: 7082290179420828793}
   - component: {fileID: 2131443951}
-  - component: {fileID: 79362514670060329}
   - component: {fileID: 1754598096326562986}
   - component: {fileID: 4549072949754638265}
   - component: {fileID: 328194441428214919}
   - component: {fileID: 9211466936819842273}
+  - component: {fileID: 2953265668517532466}
+  - component: {fileID: 3592091236439616170}
   m_Layer: 6
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10021,22 +10022,6 @@ MonoBehaviour:
   lightIntensity: 2.5
   thrusterParticle: {fileID: 4942133856255507945}
   light2D: {fileID: 3235695263715343740}
---- !u!114 &79362514670060329
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7082290179420828799}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 71df63342369470b8832e93ee8582569, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cooldown: 0.15
-  projectile: {fileID: 2758231757536333565, guid: 12db5f791b2f2274c9e4889d519cf32c, type: 3}
-  firePoint: {fileID: 7082290179792886723}
-  inputHandler: {fileID: 7082290179420828794}
 --- !u!114 &1754598096326562986
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10051,7 +10036,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   layers:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 769
   maxDistance: 25
   lineRenderer: {fileID: 9211466936819842273}
   firePoint: {fileID: 7082290179792886723}
@@ -10086,7 +10071,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dustUpdated:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: ResourceUI, Assembly-CSharp
+        m_MethodName: UpdateText
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!120 &9211466936819842273
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -10186,6 +10183,56 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
+--- !u!114 &2953265668517532466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7082290179420828799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4044520eaac94113997ab6659d6ea6f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  current: 100
+  max: 100
+  <InvulnerabilityPeriodOnDamaged>k__BackingField: 0.5
+  damaged:
+    m_PersistentCalls:
+      m_Calls: []
+  healthChanged:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UserInterface.HealthBarUI, Assembly-CSharp
+        m_MethodName: UpdateHealthBar
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  death:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &3592091236439616170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7082290179420828799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17b3f3a10ecd411cac60c14391669b37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: {fileID: 2953265668517532466}
+  collisionDamageMultiplier: 5
 --- !u!1 &7082290179792886724
 GameObject:
   m_ObjectHideFlags: 0
@@ -10405,7 +10452,7 @@ MonoBehaviour:
   m_PointLightInnerAngle: 55
   m_PointLightOuterAngle: 110
   m_PointLightInnerRadius: 2.12
-  m_PointLightOuterRadius: 15
+  m_PointLightOuterRadius: 20
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 1

@@ -32,7 +32,6 @@ namespace Spaceship
             }
         }
 
-
         public void Fire()
         {
             var hit = Physics2D.Raycast(firePoint.position, firePoint.up, maxDistance, layers);

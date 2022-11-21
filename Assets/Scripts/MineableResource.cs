@@ -1,12 +1,14 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class MineableResource : MonoBehaviour, IResource
 {
-    [field: SerializeField] public int Reserve { get; private set; } = 500;
     [field: SerializeField] public int Chunk { get; private set; } = 20;
 
     [field: SerializeField] public float MineDuration { get; private set; } = 2f;
 
+    public int Reserve { get; private set; }
+    
     private float resourceMineProgress;
     
     public int Mine()
@@ -36,5 +38,10 @@ public class MineableResource : MonoBehaviour, IResource
             Destroy(gameObject);
         
         return Chunk;
+    }
+
+    public void SetResourceAmount(int amount)
+    {
+        Reserve = amount;
     }
 }
