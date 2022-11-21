@@ -4,7 +4,7 @@ using UnityEngine;
 public class InputHandler : MonoBehaviour
 {
     [SerializeField] private KeyCode thruster = KeyCode.LeftShift;
-    [SerializeField] private KeyCode thrusterAlt = KeyCode.W;
+    [SerializeField] private KeyCode boost = KeyCode.W;
     [SerializeField] private KeyCode brake = KeyCode.Space;
     [SerializeField] private KeyCode brakeAlt = KeyCode.S;
     [SerializeField] private KeyCode primaryFire = KeyCode.Mouse0;
@@ -12,7 +12,8 @@ public class InputHandler : MonoBehaviour
 
     public Vector2 Input { get; private set; }
     public Vector2 MousePosition => (Vector2)mousePos;
-    public bool Thruster => (UnityEngine.Input.GetKey(thruster) || UnityEngine.Input.GetKey(thrusterAlt)) && enabled;
+    public bool Thruster => UnityEngine.Input.GetKey(thruster) && enabled;
+    public bool Boost => UnityEngine.Input.GetKey(boost) && enabled;
     public bool Brake => (UnityEngine.Input.GetKey(brake) || UnityEngine.Input.GetKey(brakeAlt)) && enabled;
 
     public bool PrimaryFire => UnityEngine.Input.GetKey(primaryFire) && enabled;
@@ -29,7 +30,6 @@ public class InputHandler : MonoBehaviour
 
     private void Update()
     {
-        //Input = new Vector2(UnityEngine.Input.GetAxis("Horizontal"), UnityEngine.Input.GetAxis("Vertical"));
         mousePos = mainCam.ScreenToWorldPoint(UnityEngine.Input.mousePosition);
     }
 }

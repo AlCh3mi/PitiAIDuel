@@ -1,4 +1,8 @@
 ﻿public interface IMiner
 {
-    public int Deposit();
+    int Resource { get; }
+    int Deposit();
+    void Increment(int amount);
+    void Decrement(int amount);
+    bool HasEnough(int amount);
 }

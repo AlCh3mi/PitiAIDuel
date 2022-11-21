@@ -38,7 +38,6 @@ public class Health : MonoBehaviour, IDamageable
     
     private void Awake()
     {
-        Current = Max;
         lastDamaged = Time.time - InvulnerabilityPeriodOnDamaged;
     }
 
@@ -53,9 +52,7 @@ public class Health : MonoBehaviour, IDamageable
             return;
         
         Max = newMax;
-        
-        if(Current > Max)
-            Current = Max;
+        Current = Max;
     }
     
     public void Heal(float healing)

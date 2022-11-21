@@ -26,7 +26,6 @@ namespace Spaceship
                     return;
                 
                 var dmg = impact.magnitude * collisionDamageMultiplier;
-                Debug.Log($"Velocity : {impact} - Magnitude: {impact.magnitude} - Damage: {dmg}");
                 health.TakeDamage(dmg);
             }
         }

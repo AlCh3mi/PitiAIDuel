@@ -3,7 +3,7 @@ using UnityEngine.Rendering.Universal;
 
 namespace Spaceship
 {
-    public class Thruster : MonoBehaviour
+    public class Boost : MonoBehaviour
     {
         [SerializeField] private float lightIntensity = 2.5f;
         [SerializeField] private ParticleSystem thrusterParticle;
@@ -18,7 +18,7 @@ namespace Spaceship
 
         private void Update()
         {
-            if(!inputHandler.Thruster)
+            if(!inputHandler.Boost)
             {
                 thrusterParticle.Stop();
                 light2D.intensity = Mathf.Lerp(light2D.intensity, 0f, Time.deltaTime);

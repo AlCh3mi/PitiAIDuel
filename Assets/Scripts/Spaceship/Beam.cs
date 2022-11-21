@@ -12,8 +12,7 @@ namespace Spaceship
         [SerializeField] private InputHandler inputHandler;
         [SerializeField] private ParticleSystem hitImpact;
         [SerializeField] private CargoBay cargoBay;
-
-
+        
         private void Start()
         {
             Physics2D.queriesHitTriggers = false;

@@ -1,8 +1,10 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class MineableResource : MonoBehaviour, IResource
 {
+    [SerializeField] private UnityEvent onResourcesDepleted;
     [field: SerializeField] public int Chunk { get; private set; } = 20;
 
     [field: SerializeField] public float MineDuration { get; private set; } = 2f;
@@ -14,14 +16,15 @@ public class MineableResource : MonoBehaviour, IResource
     public int Mine()
     {
         if (Reserve <= 0)
-            Destroy(gameObject);
+        {
+            onResourcesDepleted?.Invoke();
+            return 0;
+        }
         
         resourceMineProgress += Time.deltaTime;
 
         if (resourceMineProgress < MineDuration)
-        {
             return 0;
-        }
         
         if(Reserve < Chunk)
         {
@@ -35,13 +38,10 @@ public class MineableResource : MonoBehaviour, IResource
         resourceMineProgress = 0f;
         
         if(Reserve <= 0)
-            Destroy(gameObject);
+            onResourcesDepleted?.Invoke();
         
         return Chunk;
     }
 
-    public void SetResourceAmount(int amount)
-    {
-        Reserve = amount;
-    }
+    public void SetResourceAmount(int amount) => Reserve = amount;
 }

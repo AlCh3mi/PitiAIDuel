@@ -8132,7 +8132,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 20
+  m_Radius: 25
 --- !u!82 &7555515436778692370
 AudioSource:
   m_ObjectHideFlags: 0
@@ -8953,7 +8953,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 13.28
+  m_Radius: 15
 --- !u!50 &6577502641139486209
 Rigidbody2D:
   serializedVersion: 4
@@ -9398,7 +9398,7 @@ MonoBehaviour:
   - {x: -6.3371162, y: -7.4984493, z: 0}
   m_ShapePathHash: -651657215
   m_Mesh: {fileID: 0}
-  m_InstanceId: 61426
+  m_InstanceId: 75244
 --- !u!114 &1949035857839699168
 MonoBehaviour:
   m_ObjectHideFlags: 0

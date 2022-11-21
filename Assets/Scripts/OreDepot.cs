@@ -29,7 +29,7 @@ public class OreDepot : MonoBehaviour
         }
     }
 
-    private void OnDrawGizmosSelected()
+    private void OnDrawGizmosSelected() //todo Add Total Amount deposited userfeedback (world space or UI)
     {
         GUI.Label(new Rect(10, 10, 100, 20), Amount.ToString());
     }

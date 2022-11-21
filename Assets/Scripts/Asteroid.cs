@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿using System;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -8,8 +8,8 @@ public class Asteroid : MonoBehaviour
     [SerializeField] private float angularVelocity;
     [SerializeField] private float size = 5f;
     [SerializeField] private MineableResource resource;
-
-    public MineableResource Resource => resource;
+    [SerializeField] private Health health;
+    [SerializeField] private ParticleSystem explosionParticleSystem;
 
     private Rigidbody2D rb2d;
 
@@ -24,6 +24,7 @@ public class Asteroid : MonoBehaviour
         AddRandomAngularVelocity();
         AddRandomDirectionalForce();
         resource.SetResourceAmount((int)(rb2d.mass * 10));
+        health.SetMaxHealth(rb2d.mass * 5);
     }
 
     private void UpdateSize()
@@ -46,5 +47,12 @@ public class Asteroid : MonoBehaviour
     {
         var random = Random.Range(-angularVelocity, angularVelocity);
         rb2d.angularVelocity = random;
+    }
+
+    [ContextMenu("Explosion Particle Effect")]
+    public void ExplosionParticleEffect()
+    {
+        explosionParticleSystem.transform.SetParent(null);
+        explosionParticleSystem.Play();
     }
 }
