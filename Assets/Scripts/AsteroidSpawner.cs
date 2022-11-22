@@ -5,33 +5,47 @@ using Random = UnityEngine.Random;
 public class AsteroidSpawner : MonoBehaviour
 {
     [SerializeField] private Asteroid prefab;
-    [SerializeField] private float radius = 45;
-    [SerializeField] private int quantity = 50;
     [SerializeField] private float maxSize = 5f;
     [SerializeField] private LayerMask preventionLayerMask;
     [SerializeField] private Transform parent;
+    [SerializeField] private int counterThreshold = 15;
 
-
-    private void Start() => SpawnAsteroids();
-
-    [ContextMenu("Spawn Asteroids")]
-    public void SpawnAsteroids()
+    public Transform AsteroidParent => parent;
+    
+    public void SpawnAsteroids(int quantity, int radius)
     {
         var spawnedAsteroids = 0;
+        var counter = 0;
         
         while (spawnedAsteroids <= quantity)
         {
-            var position = GetRandomPositionInsideBounds();
+            var position = GetRandomPositionInsideBounds(radius);
             
-            if (!CanSpawnAtPosition(position)) 
+            if (!CanSpawnAtPosition(position))
+            {
+                if (counter > counterThreshold)
+                {
+                    Debug.LogWarning($"Unable to find valid position to place Asteroid. Spawned {spawnedAsteroids}/{quantity}");
+                    break;
+                }
+                
+                counter++;
                 continue;
+            }
             
             Instantiate(prefab, position, Quaternion.identity, parent);
             spawnedAsteroids++;
         }
     }
+    
+    [ContextMenu("Clear Asteroids")]
+    public void ClearAsteroids()
+    {
+        for (var i = parent.childCount - 1; i >= 0; i--)
+            DestroyImmediate(parent.GetChild(i).gameObject);
+    }
 
-    private Vector2 GetRandomPositionInsideBounds() => Random.insideUnitCircle * radius;
+    private Vector2 GetRandomPositionInsideBounds(int radius) => Random.insideUnitCircle * radius / 2;
 
     private bool CanSpawnAtPosition(Vector2 position)
     {

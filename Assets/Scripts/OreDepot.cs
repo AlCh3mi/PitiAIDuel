@@ -1,4 +1,5 @@
 ﻿using System;
+using Interfaces;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -24,13 +25,15 @@ public class OreDepot : MonoBehaviour
     {
         if (col.TryGetComponent<IMiner>(out var miner))
         {
+            var deposit = miner.Deposit();
+            
+            if(deposit <= 0)
+                return;
+            
             audioSource.PlayOneShot(depositAudioClip);
-            Amount += miner.Deposit();
+            Amount += deposit;
         }
     }
-
-    private void OnDrawGizmosSelected() //todo Add Total Amount deposited userfeedback (world space or UI)
-    {
-        GUI.Label(new Rect(10, 10, 100, 20), Amount.ToString());
-    }
+    
+    //todo Add Total Amount deposited user feedback (world space or UI)
 }
