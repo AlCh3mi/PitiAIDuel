@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -19,10 +20,13 @@ public class Asteroid : MonoBehaviour
         UpdateSize();
     }
 
-    private void Start()
+    private IEnumerator Start()
     {
+        yield return null;
+        
         AddRandomAngularVelocity();
         AddRandomDirectionalForce();
+
         resource.SetResourceAmount((int)(rb2d.mass * 10));
         health.SetMaxHealth(rb2d.mass * 5);
     }

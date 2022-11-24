@@ -40,7 +40,6 @@ namespace Mothership
                 return;
 
             inVicinity++;
-            Debug.Log(inVicinity);
             if(inVicinity >= threatDetectedThreshold)
             {
                 Boot();

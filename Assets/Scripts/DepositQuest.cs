@@ -1,0 +1,40 @@
+﻿using TMPro;
+using UnityEngine;
+using UnityEngine.Events;
+
+public class DepositQuest : MonoBehaviour
+{
+    [SerializeField] private int requiredDeposit;
+    [SerializeField] private TMP_Text activeQuestText;
+
+    [SerializeField] private UnityEvent objectiveCompleted;
+    [SerializeField] private UnityEvent<int, int> progressUpdated;
+    
+    private int _deposited;
+    private bool objectiveCompleteTriggered;
+
+    public int Deposited
+    {
+        get => _deposited;
+        private set
+        {
+            _deposited = value;
+            progressUpdated?.Invoke(value, requiredDeposit);
+            
+            if(_deposited >= requiredDeposit && !objectiveCompleteTriggered)
+            {
+                objectiveCompleted?.Invoke();
+                objectiveCompleteTriggered = true;
+            }
+        }
+    }
+    
+    private void Start() => UpdateQuestText();
+
+    public void UpdateQuestText() => activeQuestText.text = $"Mine {requiredDeposit - Deposited} Ore. Drop it off at the Depot.";
+    
+    public void Deposit(int amount)
+    {
+        Deposited += amount;
+    }
+}

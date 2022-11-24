@@ -6,7 +6,7 @@ namespace Spaceship
     public class CollisionDamage : MonoBehaviour
     {
         [SerializeField] private Health health;
-        [SerializeField] private float collisionDamageMultiplier = 5f;
+        [SerializeField] private float collisionDamageMultiplier = 2f;
         [Tooltip("If impact magnitude is greater than this, dmg will be taken")]
         [SerializeField] private float collisionThreshold;
     
@@ -18,14 +18,13 @@ namespace Spaceship
         {
             if (col.gameObject.layer == LayerMask.NameToLayer("Default"))
             {
-                var impact = col.gameObject.TryGetComponent<Rigidbody2D>(out var rbody)
-                    ? Vector2.Max(rb2d.velocity, rbody.velocity)
-                    : rb2d.velocity;
-                
+                var impact = col.relativeVelocity;
+
                 if(impact.magnitude < collisionThreshold)
                     return;
                 
                 var dmg = impact.magnitude * collisionDamageMultiplier;
+                dmg = Mathf.Clamp(dmg, 0, 50);
                 health.TakeDamage(dmg);
             }
         }

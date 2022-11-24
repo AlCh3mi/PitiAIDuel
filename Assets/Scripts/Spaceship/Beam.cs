@@ -13,11 +13,16 @@ namespace Spaceship
         [SerializeField] private InputHandler inputHandler;
         [SerializeField] private ParticleSystem hitImpact;
         [SerializeField] private CargoBay cargoBay;
+        [SerializeField] private AudioSource beamImpactAudio;
+        [SerializeField] private AudioSource beamAudio;
         
         private void Start()
         {
             Physics2D.queriesHitTriggers = false;
             hitImpact.Stop();
+            beamImpactAudio.Pause();
+            beamAudio.Pause();
+            
         }
         
         private void Update()
@@ -29,16 +34,19 @@ namespace Spaceship
             else
             {
                 hitImpact.Stop();
+                beamAudio.Pause();
+                beamImpactAudio.Pause();
             }
         }
 
         public void Fire()
         {
             var hit = Physics2D.Raycast(firePoint.position, firePoint.up, maxDistance, layers);
-            
+            beamAudio.UnPause();
             if (!hit)
             {
                 hitImpact.Stop();
+                beamImpactAudio.Pause();
                 lineRenderer.SetPositions(new []
                 {
                     firePoint.position,
@@ -50,6 +58,7 @@ namespace Spaceship
             hitImpact.transform.position = hit.point;
             hitImpact.transform.up = hit.normal;
             hitImpact.Play();
+            beamImpactAudio.UnPause();
             
             lineRenderer.SetPositions(new []
             {

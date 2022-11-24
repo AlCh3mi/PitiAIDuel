@@ -51,6 +51,7 @@ namespace Audio
         {
             var logVol = Mathf.Log10(value) * 20;
             mixer.SetFloat(paramName, logVol);
+            Debug.Log($"Setting {paramName} to : {value}");
             PlayerPrefs.SetFloat(paramName, value);
         }
 
@@ -67,7 +68,7 @@ namespace Audio
             DestroyImmediate(gameObject);
         }
 
-        private void OnEnable()
+        private void Start()
         {
             musicSource ??= GetComponent<AudioSource>();
             SetMixerVolumeValues();
@@ -75,7 +76,13 @@ namespace Audio
 
         private void SetMixerVolumeValues()
         {
+            var str = rememberPlayerAudioSettings
+                ? "Restoring Audio Settings"
+                : "Default Audio Settings";
+            Debug.Log(str);
+            
             SetMasterVolume(rememberPlayerAudioSettings ? MasterVolume : defaultMasterVol);
+            Debug.Log($"MASTER SAVED VALUE: " +MasterVolume);
             SetMusicVolume(rememberPlayerAudioSettings ? MusicVolume : defaultMusicVol);
             SetEffectsVolume(rememberPlayerAudioSettings ? EffectsVolume : defaultEffectsVol);
         }

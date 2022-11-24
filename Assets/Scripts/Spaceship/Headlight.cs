@@ -6,17 +6,21 @@ namespace Spaceship
 {
     public class Headlight : MonoBehaviour
     {
+        [SerializeField] private float energyDrain;
         [SerializeField] private Light2D headLight;
         [SerializeField] private InputHandler inputHandler;
-
+        [SerializeField] private Energy energy;
+        
         private void Update()
         {
-            HeadLightEnabled(inputHandler.HeadLight);
-        }
+            if (inputHandler.HeadLight && energy.HasEnough(energyDrain))
+            {
+                headLight.enabled = true;
+                energy.Drain(energyDrain);
+                return;
+            }
 
-        public void HeadLightEnabled(bool enabled)
-        {
-            headLight.enabled = enabled;
+            headLight.enabled = false;
         }
     }
 }
