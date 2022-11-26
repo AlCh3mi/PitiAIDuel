@@ -1,4 +1,6 @@
-﻿using TMPro;
+﻿using System.Collections;
+using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -6,6 +8,10 @@ public class DepositQuest : MonoBehaviour
 {
     [SerializeField] private int requiredDeposit;
     [SerializeField] private TMP_Text activeQuestText;
+
+    [Header("Text Prompts")] 
+    [SerializeField] private float textPromptsDelay = 3f;
+    [SerializeField] private List<string> textPrompts;
 
     [SerializeField] private UnityEvent objectiveCompleted;
     [SerializeField] private UnityEvent<int, int> progressUpdated;
@@ -29,7 +35,15 @@ public class DepositQuest : MonoBehaviour
         }
     }
     
-    private void Start() => UpdateQuestText();
+    private IEnumerator Start()
+    {
+        UpdateQuestText();
+
+        yield return new WaitForSeconds(textPromptsDelay);
+        
+        foreach (var textPrompt in textPrompts)
+            TextPrompt.Instance.AddPrompt(textPrompt);
+    }
 
     public void UpdateQuestText() => activeQuestText.text = $"Mine {requiredDeposit - Deposited} Ore. Drop it off at the Depot.";
     

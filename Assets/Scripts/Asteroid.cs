@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
+[SelectionBase]
 public class Asteroid : MonoBehaviour
 {
     [SerializeField] private Vector2 velocity;

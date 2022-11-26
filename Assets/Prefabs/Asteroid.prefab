@@ -216,7 +216,7 @@ MonoBehaviour:
   - {x: -0.27140045, y: -1.0245082, z: 0}
   m_ShapePathHash: -1311004821
   m_Mesh: {fileID: 0}
-  m_InstanceId: 90750
+  m_InstanceId: 179730
 --- !u!114 &6642173825580646856
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -253,6 +253,18 @@ MonoBehaviour:
       - m_Target: {fileID: 6642173825580646856}
         m_TargetAssemblyTypeName: Asteroid, Assembly-CSharp
         m_MethodName: ExplosionParticleEffect
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6595234431630527226}
+        m_TargetAssemblyTypeName: Loot.Loot, Assembly-CSharp
+        m_MethodName: Drop
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -350,6 +362,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: {fileID: 6761319571420021797}
   collisionDamageMultiplier: 5
+  maxCollisionDamage: 20
   collisionThreshold: 1
 --- !u!114 &6595234431630527226
 MonoBehaviour:

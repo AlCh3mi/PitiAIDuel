@@ -10,6 +10,10 @@ public class AsteroidSpawner : MonoBehaviour
     [SerializeField] private Transform parent;
     [SerializeField] private int counterThreshold = 15;
 
+    [Header("Manual Spawning")] 
+    [SerializeField] private int amount;
+    [SerializeField] private int rad;
+
     public Transform AsteroidParent => parent;
     
     public void SpawnAsteroids(int quantity, int radius)
@@ -43,6 +47,12 @@ public class AsteroidSpawner : MonoBehaviour
     {
         for (var i = parent.childCount - 1; i >= 0; i--)
             DestroyImmediate(parent.GetChild(i).gameObject);
+    }
+
+    [ContextMenu("Spawn Asteroids")]
+    public void ContextSpawnAsteroids()
+    {
+        SpawnAsteroids(amount, rad);
     }
 
     private Vector2 GetRandomPositionInsideBounds(int radius) => Random.insideUnitCircle * radius / 2;

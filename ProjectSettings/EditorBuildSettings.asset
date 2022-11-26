@@ -6,9 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Level1.unity
-    guid: c7f48966f03df58428016cf89362c15d
+    path: Assets/Scenes/Tutorial/Movement.unity
+    guid: f9124f4ef8343794595601b537e1a844
   - enabled: 1
     path: Assets/Scenes/Tutorial/MiningTutorial.unity
     guid: 2c810dadab105f149b9e1d13d3ffc263
+  - enabled: 1
+    path: Assets/Scenes/Level1.unity
+    guid: c7f48966f03df58428016cf89362c15d
   m_configObjects: {}
