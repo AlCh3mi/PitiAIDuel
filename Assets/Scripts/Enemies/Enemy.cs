@@ -1,5 +1,4 @@
 ﻿using System;
-using Unity.Mathematics;
 using UnityEngine;
 
 namespace Enemies
@@ -9,7 +8,6 @@ namespace Enemies
     /// </summary>
     public class Enemy : MonoBehaviour
     {
-        
         [SerializeField] private float moveSpeed = 0.1f;
         [SerializeField] private float turnSpeed = 2f;
         [SerializeField] private float aimStrictness = 0.8f;

@@ -30,7 +30,7 @@ namespace Spaceship
                 
                 boostAudioSource.Pause();
                 boostAudioSource.pitch = minPitch;
-                boostAudioSource.volume = 0.2f;
+                boostAudioSource.volume = 0.1f;
                 return;
             }
 
