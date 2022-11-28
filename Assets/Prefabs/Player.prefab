@@ -15583,7 +15583,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Max>k__BackingField: 200
   rechargeDelay: 3
-  rechargeRate: 5
+  rechargeRate: 10
   updatedEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -15747,6 +15747,8 @@ MonoBehaviour:
   firePoint: {fileID: 7082290179792886723}
   inputHandler: {fileID: 7082290179420828794}
   hitImpact: {fileID: 435683937}
+  repairCost: 5
+  repairAmount: 10
   cargoBay: {fileID: 328194441428214919}
   beamImpactAudio: {fileID: 6203445531400615265}
   beamAudio: {fileID: 5165620752130659031}
@@ -15861,7 +15863,7 @@ MonoBehaviour:
   firePoint: {fileID: 7082290179792886723}
   prefab: {fileID: 421229175816805435, guid: 89334620abc4e9e408b32431e7a0c105, type: 3}
   inputHandler: {fileID: 7082290179420828794}
-  cooldown: 2
+  cooldown: 1.5
 --- !u!1 &7082290179792886724
 GameObject:
   m_ObjectHideFlags: 0

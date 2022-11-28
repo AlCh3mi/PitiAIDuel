@@ -23,6 +23,6 @@ public class Compass : MonoBehaviour
 
         var toTarget = (target.position - transform.position);
         var rotation = Quaternion.LookRotation(Vector3.forward, toTarget);
-        compass.localRotation = rotation;
+        compass.transform.rotation = rotation;
     }
 }

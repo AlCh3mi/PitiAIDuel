@@ -2,10 +2,10 @@
 {
     public interface IMiner
     {
-        int Resource { get; }
-        int Deposit();
-        void Increment(int amount);
-        void Decrement(int amount);
-        bool HasEnough(int amount);
+        float Resource { get; }
+        float Deposit();
+        void Increment(float amount);
+        void Decrement(float amount);
+        bool HasEnough(float amount);
     }
 }

@@ -14,12 +14,12 @@ public class DepositQuest : MonoBehaviour
     [SerializeField] private List<string> textPrompts;
 
     [SerializeField] private UnityEvent objectiveCompleted;
-    [SerializeField] private UnityEvent<int, int> progressUpdated;
+    [SerializeField] private UnityEvent<float, float> progressUpdated;
     
-    private int _deposited;
+    private float _deposited;
     private bool objectiveCompleteTriggered;
 
-    public int Deposited
+    public float Deposited
     {
         get => _deposited;
         private set
@@ -47,7 +47,7 @@ public class DepositQuest : MonoBehaviour
 
     public void UpdateQuestText() => activeQuestText.text = $"Mine {requiredDeposit - Deposited} Ore. Drop it off at the Depot.";
     
-    public void Deposit(int amount)
+    public void Deposit(float amount)
     {
         Deposited += amount;
     }

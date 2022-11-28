@@ -7,11 +7,11 @@ namespace Spaceship
 {
     public class CargoBay : MonoBehaviour, IMiner
     {
-        public UnityEvent<int> dustUpdated;
+        public UnityEvent<float> dustUpdated;
 
-        private int resource;
+        private float resource;
 
-        public int Resource
+        public float Resource
         {
             get => resource;
             private set
@@ -23,9 +23,9 @@ namespace Spaceship
         
         private void Start() => dustUpdated?.Invoke(resource);
 
-        public bool HasEnough(int amount) => amount >= Resource;
+        public bool HasEnough(float amount) => amount <= Resource;
 
-        public void Decrement(int amount)
+        public void Decrement(float amount)
         {
             if (!HasEnough(Mathf.Abs(amount)))
                 return;
@@ -33,7 +33,7 @@ namespace Spaceship
             Resource -= amount;
         }
 
-        public void Increment(int amount)
+        public void Increment(float amount)
         {
             if(amount <= 0)
                 return;
@@ -41,7 +41,7 @@ namespace Spaceship
             Resource += amount;
         }
 
-        public int Deposit()
+        public float Deposit()
         {
             var deposited = Resource;
             Decrement(Resource);

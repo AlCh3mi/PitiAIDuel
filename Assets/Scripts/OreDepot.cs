@@ -8,10 +8,10 @@ public class OreDepot : MonoBehaviour
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip depositAudioClip;
     
-    public UnityEvent<int> oreReservesUpdated;
+    public UnityEvent<float> oreReservesUpdated;
 
-    private int amount;
-    public int Amount
+    private float amount;
+    public float Amount
     {
         get => amount;
         private set

@@ -7,9 +7,9 @@ namespace UserInterface
     {
         [SerializeField] private TMP_Text text;
 
-        public void UpdateText(int amount)
+        public void UpdateText(float amount)
         {
-            text.text = amount.ToString();
+            text.text = ((int)amount).ToString();
         }
     }
 }

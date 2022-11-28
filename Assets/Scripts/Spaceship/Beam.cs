@@ -12,6 +12,8 @@ namespace Spaceship
         [SerializeField] private Transform firePoint;
         [SerializeField] private InputHandler inputHandler;
         [SerializeField] private ParticleSystem hitImpact;
+        [SerializeField] private int repairCost = 5;
+        [SerializeField] private float repairAmount = 5f;
         [SerializeField] private CargoBay cargoBay;
         [SerializeField] private AudioSource beamImpactAudio;
         [SerializeField] private AudioSource beamAudio;
@@ -69,6 +71,16 @@ namespace Spaceship
             if (hit.collider.TryGetComponent<IResource>(out var resource))
             {
                 cargoBay.Increment(resource.Mine());
+            }
+
+            if (hit.collider.TryGetComponent<IRepairable>(out var repairable))
+            {
+                Debug.Log("Repairable Detected");
+                if(cargoBay.HasEnough(repairCost))
+                {
+                    cargoBay.Decrement(repairCost * Time.deltaTime);
+                    repairable.Repair(repairAmount);
+                }
             }
         }
     }

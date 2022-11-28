@@ -4907,7 +4907,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 769
   damage: 50
-  lifeTimer: 1.75
+  lifeTimer: 3
   thrusterParticleSystem: {fileID: 421229175704068760}
   explosionParticleSystem: {fileID: 5007891643928328795}
   audioSource: {fileID: 8193151123555528016}
@@ -10011,8 +10011,8 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 72331903
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_RenderMode: 0
   m_MeshDistribution: 0
@@ -14881,8 +14881,8 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 72331903
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_RenderMode: 0
   m_MeshDistribution: 0
